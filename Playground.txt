@@ -1,0 +1,42 @@
+|lavadero ordenlavado autobus camion caja auxiliar existe|
+Transcript clear.
+ordenlavado := OrdenLavado new.
+ordenlavado numeroOrden: 1.
+ordenlavado importeLavadoBase: 50.
+
+autobus := OrdenLavadoAutoBus new.
+autobus numeroOrden: 5.
+autobus cantidadAsientos: 10.
+autobus importeLavadoBase: 10.
+autobus importeLavadoAsiento: 10.
+
+caja := LavadoCajaCamion new.
+caja altoCaja: 10.
+caja anchoCaja: 10.
+caja largoCaja: 10.
+caja importeBaseLavadoCajaM3: 100 .
+
+camion := OrdenLavadoCamion new.
+camion numeroOrden: 2.
+camion importeLavadoChasis: 10.
+camion importeLavadoCabina: 20.
+camion lavadoCajaCamion: caja. 
+
+lavadero := Lavadero new.
+lavadero razonSocial: 'franco y asociados'.
+lavadero addOrdenLavado: ordenlavado.
+lavadero addOrdenLavado: autobus.
+lavadero addOrdenLavado: camion .
+lavadero addOrdenLavado: autobus . "verificacion de que no se repita numero"
+Transcript show: lavadero razonSocial.
+Transcript cr.
+Transcript show: lavadero ordenesLavado.
+Transcript cr.
+Transcript show: 'importe final promedio de ordenes de lavado:',
+						lavadero importeFinalPromedioOrdenesLavado asString.
+Transcript cr.
+auxiliar := lavadero cantidadOrdenesLavadoAutoBus: 1 hasta: 10. 
+Transcript show: 'cantidad de ordenes de lavado de autobuses: ', auxiliar asString.
+Transcript cr.
+existe := lavadero existeOrdenLavado: 15.
+Transcript show: existe  
